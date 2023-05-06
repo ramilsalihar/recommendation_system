@@ -1,19 +1,28 @@
-import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class Place with ChangeNotifier {
-  final String imagePath;
+part 'place.g.dart';
+
+@JsonSerializable()
+class Place {
   final String name;
-  final List<String> tags;
   final String description;
-  final double price;
+  final List<String> tags;
+  final String imagePath;
+  final String address;
+  final List<String> contacts;
   bool isFavorite;
 
   Place({
-    required this.imagePath,
     required this.name,
-    required this.tags,
     required this.description,
-    required this.price,
+    required this.tags,
+    required this.imagePath,
+    required this.address,
+    required this.contacts,
     required this.isFavorite,
   });
+
+  factory Place.fromJson(Map<String, dynamic> json) => _$PlaceFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PlaceToJson(this);
 }

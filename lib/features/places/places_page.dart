@@ -35,12 +35,10 @@ class _PlacesPageState extends State<PlacesPage> {
           );
         }),
         actions: [
-          Consumer<Places>(
-            builder:(ctx, places, _) => IconButton(
-              onPressed: () {print(places.items);},
+          IconButton(
+              onPressed: () {},
               icon: const Icon(Icons.favorite),
             ),
-          )
         ],
       ),
       body: RefreshIndicator(
@@ -52,11 +50,14 @@ class _PlacesPageState extends State<PlacesPage> {
               itemBuilder: (ctx, i) => Column(
                 children: [
                   PlaceCard(
-                      imagePath: places[i].imagePath,
                       placeName: places[i].name,
                       description: places[i].description,
-                      averagePrice: places[i].price,
-                      isFavorite: places[i].isFavorite),
+                      tags: places[i].tags,
+                      imagePath: places[i].imagePath,
+                      address: places[i].address,
+                      contacts: places[i].contacts,
+                      isFavorite: places[i].isFavorite
+                  ),
                 ],
               ),
             ),

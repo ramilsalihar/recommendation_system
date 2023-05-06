@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:recomendation_system/features/places/place_overview.dart';
 
 class PlaceCard extends StatelessWidget {
-  final String imagePath;
   final String placeName;
   final String description;
-  final double averagePrice;
-  final bool isFavorite;
+  final List<String> tags;
+  final String imagePath;
+  final String address;
+  final List<String> contacts;
+  final bool? isFavorite;
 
   const PlaceCard({
     super.key,
-    required this.imagePath,
     required this.placeName,
     required this.description,
-    required this.averagePrice,
-    required this.isFavorite,
+    required this.tags,
+    required this.imagePath,
+    required this.address,
+    required this.contacts,
+    this.isFavorite,
   });
 
   @override
@@ -59,7 +63,7 @@ class PlaceCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '\$${averagePrice.toStringAsFixed(2)}',
+                          '${contacts}',
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -77,7 +81,7 @@ class PlaceCard extends StatelessWidget {
                             // TODO: Add your action here.
                           },
                           icon: Icon(
-                            isFavorite ? Icons.favorite : Icons.favorite_border,
+                            isFavorite == null ? Icons.favorite : Icons.favorite_border,
                             color: Colors.red,
                           ),
                         ),

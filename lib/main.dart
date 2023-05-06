@@ -45,16 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Places>(
-          create: (_) => Places([
-            Place(
-              imagePath: 'assets/images/maiki.jpeg',
-              name: 'Caffe',
-              tags: ["enterainment"],
-              description: 'description',
-              price: 500,
-              isFavorite: false,
-            )
-          ]),
+          create: (_) => Places([]),
         )
       ],
       child: const PlacesPage(),
